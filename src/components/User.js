@@ -62,7 +62,7 @@ const User = ({ name, location, email, picture, login , dob ,gender}) => {
             <div><strong>Password:</strong> {login.password}</div>
             <div><strong>Name:</strong> {name.first} {name.last}</div>
             <div><button onClick={handleInsertData}>insert Data</button></div>
-            <div><button onClick={handleLogData}>Log Data</button></div>
+            {/* <div><button onClick={handleLogData}>Log Data</button></div> */}
         </div>
     );
 };
