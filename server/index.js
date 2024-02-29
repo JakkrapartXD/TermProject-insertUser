@@ -26,11 +26,17 @@ db.connect((err) => {
 // Section 2
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '..', "router", "main")));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Section 3
 app.get('/', (req, res) => {
-    res.send("<h1>Home page</h1>");
+    // app.use(express.static(path.join(__dirname, '..', "router", "main")));
+    res.sendFile(path.join(__dirname, '..', "router", "main", "index.html"));
+});
+
+app.get('/user', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public','index.html'));
 });
 
 app.get('/users', (req, res) => {
