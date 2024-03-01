@@ -30,14 +30,16 @@ const User = ({ name, location, email, picture, login , dob ,gender}) => {
                 picture_thumbnail: picture.thumbnail
             })
             console.log(data);
-            const response = await axios.post('http://localhost:3004/api/adduser/add',data,{
+            const response = await axios.post('http://api-user66004.se-rmutl.net/api/adduser/add',data,{
                 headers: {
                   // Overwrite Axios's automatically set Content-Type
                   'Content-Type': 'application/json'
                 }
               });
-
-            console.log(response.data);
+            if(response.status === 200){
+                alert(name.title +" "+name.first +" "+name.last+" "+response.data);
+            }
+            console.log(response);
         } catch (error) {
             console.error('Error inserting data:', error);
         }
