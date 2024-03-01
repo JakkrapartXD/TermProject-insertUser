@@ -17,8 +17,7 @@ const User = ({ name, location, email, picture, login , dob ,gender}) => {
     };
     const handleInsertData = async () => {
         try {
-            // Send a request to your server endpoint
-            console.log({
+            var data = JSON.stringify({
                 name_title: name.title,
                 name_first: name.first,
                 name_last: name.last,
@@ -29,19 +28,14 @@ const User = ({ name, location, email, picture, login , dob ,gender}) => {
                 login_username: login.username,
                 login_password: login.password,
                 picture_thumbnail: picture.thumbnail
-            });
-            const response = await axios.post('http://localhost:3000/insertData',{
-                name_title: name.title,
-                name_first: name.first,
-                name_last: name.last,
-                country: location.country,
-                email: email,
-                gender: gender, 
-                age: dob.age, 
-                login_username: login.username,
-                login_password: login.password,
-                picture_thumbnail: picture.thumbnail
-            });
+            })
+            console.log(data);
+            const response = await axios.post('http://localhost:3004/api/adduser/add',data,{
+                headers: {
+                  // Overwrite Axios's automatically set Content-Type
+                  'Content-Type': 'application/json'
+                }
+              });
 
             console.log(response.data);
         } catch (error) {
